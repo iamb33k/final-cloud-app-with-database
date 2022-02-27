@@ -95,7 +95,7 @@ class Enrollment(models.Model):
     rating = models.FloatField(default=5.0)
 
 
-
+# Question model
 class Question(models.Model):
    # Foreign key to lesson
     lesson_id = models.ForeignKey(Lesson, on_delete=models.CASCADE)
@@ -113,12 +113,13 @@ def is_get_score(self, selected_ids):
     else:
         return False
 
-
+#Choice model
 class Choice(models.Model):
     questions = models.ManytoManyField(Question)
     choice_text = models.TextField(max_length=1000)
     is_correct = models.BooleanField(default=false)
 
+#submission model
 class Submission(models.Model):
    enrollment = models.ForeignKey(Enrollment, on_delete=models.CASCADE)
    choices = models.ManyToManyField(Choice)
